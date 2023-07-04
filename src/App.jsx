@@ -8,7 +8,13 @@ import AddTodo from './components/AddTodo'
 function App() {
   const [todos, setTodos] = useState([])
 
-  useeff
+  useEffect(() => {
+    axios.get('http://localhost:3000/todos')
+    .then((res) => {
+      console.log(res.data)
+      setTodos(res.data)
+    })
+  },[])
 
   return (
     <>

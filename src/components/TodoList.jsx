@@ -19,7 +19,6 @@ const TodoList = ({todos}) => {
             <div className='todo-container '>
                 {todos && todos.map((todo, index) => (
                     <div key={index} className='todo-card'>
-                        <p>{todo.id}</p>
                         <p>{todo.title}</p>
                         <div className="flex justify-between">
                             <button className="btn">
