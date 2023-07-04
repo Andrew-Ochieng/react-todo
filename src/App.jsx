@@ -8,20 +8,7 @@ import AddTodo from './components/AddTodo'
 function App() {
   const [todos, setTodos] = useState([])
 
-  async function getTodos () {
-    try {
-      let res = await axios.get('https://jsonplaceholder.typicode.com/todos')
-      let todos = res.data.splice(190)
-      setTodos(todos)
-      // console.log(todos.id)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    getTodos()
-  }, [])
+  useeff
 
   return (
     <>

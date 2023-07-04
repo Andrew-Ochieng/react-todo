@@ -2,33 +2,22 @@ import { useState } from "react";
 import axios from "axios";
 
 const AddTodo = () => {
-    const [todo, setTodo] = useState("")
+    const [title, setTitle  ] = useState("")
 
     const handleForm = (e) => {
         e.preventDefault()
 
         // post data in axios
-        axios.post('https://jsonplaceholder.typicode.com/todos', {
-            todo
+        axios.post('http://localhost:3000/todos', {
+            title
         })
         .then((res) => res.data)
         .then((data) => {
             console.log(data)
         })
+        
+        
 
-        // fetch('https://jsonplaceholder.typicode.com/todos', {
-        //     method: "POST", 
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         todo
-        //     })
-        // })
-        // .then((res) => res.json())
-        // .then((data) => {
-        //     console.log(data)
-        // })
 
         
         
@@ -36,17 +25,22 @@ const AddTodo = () => {
 
     return ( 
         <>
-            <div className="todo-container flex justify-center">
-                <form onSubmit={handleForm} method="post">
-                    <input 
-                        onChange={(e) => setTodo(e.target.value)}
-                        value={todo}
-                        type="text" 
-                        className="todo-input"
-                        placeholder="Add Todo" 
-                    />
-                </form>
-            </div>
+            <form onSubmit={handleForm} className="todo-container grid md:grid-cols-3">
+                <input 
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                    type="text" 
+                    className="todo-input"
+                    placeholder="Add Todo" 
+                />
+                {/* <select name="" className="todo-input border-none">
+                    <option value="true">Completed</option>
+                    <option value="false">Incompleted</option>
+                </select> */}
+                <button className="btn">
+                    Submit
+                </button>
+            </form>
         </>
      );
 }

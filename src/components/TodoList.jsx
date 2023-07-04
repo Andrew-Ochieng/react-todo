@@ -1,31 +1,31 @@
+import axios from "axios";
 
 
-const TodoList = ({todos, setTodos}) => {
+const TodoList = ({todos}) => {
 
-    const handleDelete = (deletedTodo) => {
-    fetch(`https://jsonplaceholder.typicode.com/todos/${deletedTodo.id}`, {method: "DELETE"})
-    .then((res) => {
-        if(res.ok) {
-            const newTodos = todos.filter((todo) => todo.id !== deletedTodo.id)
-            setTodos(newTodos)
-        } else {
-            res.json().then(error => console.warn(error)) 
-        }
-    })
-
+    const handleDelete = (id) => {
+        axios.delete(`http://localhost:3000/todos/${id}`)
+            .then((res) => {
+                res.status === 200 ? 
+                    console.log('Todo was successfully deleted') : 
+                    console.error('Product could not be deleted. Try again later!!!')
+            })
     }
+
+    // console.log(todos)
 
     return ( 
         <>
             <div className='todo-container '>
                 {todos && todos.map((todo, index) => (
                     <div key={index} className='todo-card'>
+                        <p>{todo.id}</p>
                         <p>{todo.title}</p>
                         <div className="flex justify-between">
                             <button className="btn">
                                     Edit
                             </button>
-                            <button onClick={handleDelete} className="btn bg-red-500">
+                            <button onClick={() => handleDelete(todo.id)} className="btn bg-red-500">
                                 Delete
                             </button>
                         </div>
