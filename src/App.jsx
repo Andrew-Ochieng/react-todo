@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
-import TodoList from './components/TodoList'
-import AddTodo from './components/AddTodo'
+import TodoList from './pages/TodoList'
+import AddTodo from './pages/AddTodo'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar'
 
 
 function App() {
@@ -18,11 +20,13 @@ function App() {
 
   return (
     <>
-      <div>
-        <h1 className='title'>Todos</h1>
-        <AddTodo />
-        <TodoList todos={todos} setTodos={setTodos} />
-      </div>
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={ <TodoList todos={todos} setTodos={setTodos} /> }  />
+          <Route path='/addtodo' element={ <AddTodo setTodos={setTodos} /> } />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }

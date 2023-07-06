@@ -1,14 +1,20 @@
 {
   "todos": [
     {
-      "id": 4,
-      "title": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "completed": true
+      "title": "from the API to display them, and allows the user to perform other CRUD methods on them as well.",
+      "id": 15
     },
     {
-      "id": 5,
+      "title": "The user can see their current list of todos. Todos show up as soon as the page loads.",
+      "id": 18
+    },
+    {
       "title": "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "completed": true
+      "id": 19
+    },
+    {
+      "title": "The user can see their current list of todos. Todos show up as soon as the page loads.",
+      "id": 20
     }
   ]
 }
