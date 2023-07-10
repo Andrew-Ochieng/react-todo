@@ -13,13 +13,14 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3000/todos')
     .then((res) => {
-      console.log(res.data)
-      setTodos(res.data)
+      const items = res.data
+      setTodos(items)
     })
   },[])
 
   return (
     <>
+      <div className='body'>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -27,6 +28,7 @@ function App() {
           <Route path='/addtodo' element={ <AddTodo setTodos={setTodos} /> } />
         </Routes>
       </BrowserRouter>
+      </div>
     </>
   )
 }

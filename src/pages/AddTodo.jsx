@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 
 const AddTodo = () => {
-    const [formData, setFormData] = useState({title: ""})
+    const [formData, setFormData] = useState({title: "", description: ""})
     const navigate = useNavigate()
 
     const handleForm = (e) => {
@@ -25,6 +25,7 @@ const AddTodo = () => {
 
     return ( 
         <>
+        <div className="md:px-32 px-4 md:my-16 my-8">
             <h1 className='title'>Add New Todo</h1>
             <ToastContainer 
                 position = 'top-center'
@@ -36,22 +37,30 @@ const AddTodo = () => {
                 progress = {undefined}
                 theme= 'colored'
             />
-            <form onSubmit={handleForm} className="todo-container grid md:grid-cols-3">
-                <input 
-                    onChange={(e) => setFormData({...formData, title: e.target.value})}
-                    name="title"
-                    type="text" 
-                    className="todo-input"
-                    placeholder="Add Todo" 
-                />
-                {/* <select name="" className="todo-input border-none">
-                    <option value="true">Completed</option>
-                    <option value="false">Incompleted</option>
-                </select> */}
-                <button className="btn">
-                    Submit
-                </button>
-            </form>
+            <div className="flex flex-col items-center justify-center space-y-6 ">
+                <form onSubmit={handleForm} className="flex flex-col items-center space-y-6 md:min-w-xl">
+                    <input 
+                        required
+                        onChange={(e) => setFormData({...formData, title: e.target.value})}
+                        type="text" 
+                        className="todo-input w-full"
+                        placeholder="Add title..." 
+                    />
+                    <textarea
+                        required 
+                        onChange={(e) => setFormData({...formData, description: e.target.value})}
+                        type="text" 
+                        className="todo-input w-full"
+                        placeholder="Add description..." 
+                        cols="30" 
+                        rows="4"
+                    ></textarea>
+                    <button className="btn w-full">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
         </>
      );
 }

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
     return ( 
         <>
-            <div className="flex md:justify-around justify-between bg-teal-500 py-3 md:px-0 px-4">
+            <div className="flex md:justify-around justify-between bg-green-500 py-4 md:px-0 px-4">
                 <div>
                     Todo List
                 </div>
